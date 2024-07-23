@@ -1,4 +1,4 @@
-package components
+package components.modal
 
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button

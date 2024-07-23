@@ -20,6 +20,7 @@ kotlin {
                     static = (static ?: mutableListOf()).apply {
                         // Serve sources to debug inside browser
                         add(project.projectDir.path)
+                        port = 3000
                     }
                 }
             }
@@ -64,7 +65,8 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
-            implementation(libs.voyager.tabNavigator)        }
+            implementation(libs.voyager.tabNavigator)
+        }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
         }
@@ -72,7 +74,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.kmp.demo"
+    namespace = "com.kmp.resimanager"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
@@ -80,7 +82,7 @@ android {
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        applicationId = "com.kmp.demo"
+        applicationId = "com.kmp.resimanager"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
@@ -117,7 +119,7 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.kmp.demo"
+            packageName = "com.kmp.resimanager"
             packageVersion = "1.0.0"
         }
     }

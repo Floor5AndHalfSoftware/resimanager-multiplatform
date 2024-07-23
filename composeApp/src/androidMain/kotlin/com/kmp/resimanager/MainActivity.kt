@@ -1,4 +1,4 @@
-package com.kmp.demo
+package com.kmp.resimanager
 
 import App
 import android.os.Bundle

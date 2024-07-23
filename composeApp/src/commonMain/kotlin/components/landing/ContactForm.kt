@@ -1,4 +1,4 @@
-package components
+package components.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,27 +25,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.core.screen.Screen
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
-
-val primaryColor = Color(0xFF6200EE)
-
-class LoginScreen : Screen {
-    @Composable
-    override fun Content() {
-        Login()
-    }
-}
+import components.login.primaryColor
 
 @Composable
-fun Login() {
+fun ContactForm() {
     var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-    val navigator = LocalNavigator.currentOrThrow
+    var message by remember { mutableStateOf("") }
 
     Surface(
         modifier = Modifier.fillMaxSize(),
@@ -64,6 +53,14 @@ fun Login() {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Text(
+                    text = "Contacto",
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+                    color = primaryColor
+                )
+                Spacer(modifier = Modifier.height(16.dp))
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
@@ -73,11 +70,11 @@ fun Login() {
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(
-                    value = password,
-                    onValueChange = { password = it },
-                    label = { Text("Password") },
-                    modifier = Modifier.fillMaxWidth(),
-                    visualTransformation = PasswordVisualTransformation()
+                    value = message,
+                    onValueChange = { message = it },
+                    label = { Text("Mensaje") },
+                    modifier = Modifier.fillMaxWidth().height(150.dp),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 Row(
@@ -85,11 +82,11 @@ fun Login() {
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Button(
-                        onClick = { navigator.push(LandingScreen()) },
+                        onClick = {},
                         modifier = Modifier.fillMaxWidth(),
                         colors = ButtonDefaults.buttonColors(primaryColor)
                     ) {
-                        Text(text = "Sign in", color = Color.White)
+                        Text(text = "Enviar", color = Color.White)
                     }
                 }
             }

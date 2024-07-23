@@ -1,7 +1,8 @@
-package components
+package components.landing
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import components.modal.InfoModal
 
 @Composable
 fun BodySection(map: MutableMap<String, MutableState<Boolean>>) {
@@ -11,8 +12,7 @@ fun BodySection(map: MutableMap<String, MutableState<Boolean>>) {
     if (map["SHOW_DASHBOARD"] != null && map["SHOW_DASHBOARD"]?.value == true) {
         Dashboard()
     }
-    if (map["SHOW_CONTACT_FORM"] != null && map["SHOW_CONTACT_FORM"]?.value == true) {
-        ContactForm()
+    if (map["SHOW_ADMIN_REQUEST_FORM"] != null && map["SHOW_ADMIN_REQUEST_FORM"]?.value == true) {
+        AdminRequestForm()
     }
-
 }

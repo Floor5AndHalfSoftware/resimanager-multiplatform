@@ -1,4 +1,4 @@
-package components
+package components.landing
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,11 +29,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import cafe.adriel.voyager.navigator.LocalNavigator
-import cafe.adriel.voyager.navigator.currentOrThrow
+import components.login.primaryColor
 
 @Composable
-fun ContactForm() {
+fun AdminRequestForm() {
     var email by remember { mutableStateOf("") }
     var message by remember { mutableStateOf("") }
 
@@ -49,13 +48,13 @@ fun ContactForm() {
             Column(
                 modifier = Modifier
                     .padding(16.dp)
-                    .widthIn(max = 400.dp) // Establece un ancho máximo
+                    .widthIn(max = 800.dp) // Establece un ancho máximo
                     .fillMaxWidth(),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Contacto",
+                    text = "Solicitud de administrador",
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center,
